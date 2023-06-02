@@ -1,24 +1,7 @@
-using POS_DeportShop.Data;
-using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using Microsoft.AspNetCore.Authentication.Cookies;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<POS_DeportShopContext>(optionsAction:_ => 
-{
-    _.UseMySql(builder.Configuration.GetConnectionString("MySqlConnection"),Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.27-mariadb"));
-});
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option => 
-{
-    option.LoginPath = "/Access/Login";
-    option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-});
 
 var app = builder.Build();
 
@@ -34,8 +17,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthentication();
 
 app.UseAuthorization();
 
