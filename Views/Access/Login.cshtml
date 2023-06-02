@@ -1,0 +1,41 @@
+@model POS_DeportShop.Models.Usuario;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - POS_DeportShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/POS_DeportShop.styles.css" asp-append-version="true" />
+</head>
+<body class="text-center">
+
+    
+<main class="form-signin w-100 m-auto" style="max-width: 350px; padding: 15px; z-index: 2;">
+<img class="mb-4" src="~/img/DeportShop.png" alt="" ><br /><br />
+<form method="post" asp-action="Login" asp-controller="Access">
+    
+    <h1 class="h3 mb-3">Inicio de sesion</h1>
+    <div class="form-floating">
+        <input type="text" class="form-control" required asp-for="Email" />
+        <label for="floatingInput">Email</label>
+    </div><br />
+    <div class="form-floating">
+        <input type="password" class="form-control" required asp-for="PassWord" />
+        <label for="floatingPassword">Password</label>
+    </div><br />
+    <div class=" checkbox mb-3">
+        <label>
+            <input type="checkbox" asp-for="MantenerActivo" /> Recordar sesion
+        </label>
+    </div>
+    <button type="submit" class="btn-lg btn-primary">Ingresar</button><br />
+    <label class="alert-danger">@ViewBag.Error</label>
+</form>
+</main>
+</body>
